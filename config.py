@@ -9,11 +9,12 @@ def set_config(args):
     """
 
     args.gpu_mem = 7 # Gbyte (adjust this as needed)
-    args.dataset_path = '/path/to/data/'  # for datasets
+    args.dataset_path = './data/'  # for datasets
     args.output_path =   '/path/to/outputs/' # for logs, weights, etc.
     
     args.archi = 'resnet9'
-    args.dataset_id_to_name = {0: 'cifar_10'}
+    args.dataset_id_to_name = {0: 'cifar_10',
+                               1: 'fmnist'}
     
     # scenarios
     if 'lc' in args.task:
@@ -43,12 +44,18 @@ def set_config(args):
     if 'biid' in args.task or 'bimb'in args.task: 
         args.sync = False
         args.num_tasks = 1
-        args.num_clients = 100
-        args.num_rounds = 200 
+        args.num_clients = 50
+        args.num_rounds = 100
     
     # datasets
     if 'c10' in args.task:
         args.dataset_id = 0
+        args.num_classes = 10
+        args.num_test = 2000
+        args.num_valid = 2000
+        args.batch_size_test = 100
+    elif 'fmnist' in args.task:
+        args.dataset_id = 1
         args.num_classes = 10
         args.num_test = 2000
         args.num_valid = 2000

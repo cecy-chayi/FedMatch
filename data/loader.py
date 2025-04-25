@@ -23,16 +23,16 @@ class DataLoader:
         """
 
         self.args = args
-        self.shape = (32,32,3)
+        self.shape = (32,32,3) if args.dataset_id == 0 else (28,28,1)
         self.rand_augment = RandAugment()
         self.base_dir = os.path.join(self.args.dataset_path, self.args.task) 
-        self.stats = [{
-                'mean': [x/255 for x in [125.3,123.0,113.9]],
-                'std': [x/255 for x in [63.0,62.1,66.7]]
-            }, {
-                'mean': [0.2190, 0.2190, 0.2190],
-                'std': [0.3318, 0.3318, 0.3318]
-            }]
+        # self.stats = [{
+        #         'mean': [x/255 for x in [125.3,123.0,113.9]],
+        #         'std': [x/255 for x in [63.0,62.1,66.7]]
+        #     }, {
+        #         'mean': [0.2190, 0.2190, 0.2190],
+        #         'std': [0.3318, 0.3318, 0.3318]
+        #     }]
 
     def get_s_by_id(self, client_id):
         task = np_load(self.base_dir, f's_{self.args.dataset_id_to_name[self.args.dataset_id]}_{client_id}.npy')

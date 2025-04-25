@@ -8,3 +8,12 @@ models/.DS_Store
 .DS_Store
 
 sftp-config.json
+
+.gitignore
+
+data/test_generator.py
+
+data/valid_generator.py
+
+data/data/*
+data/cifar-10-python.tar.gz
