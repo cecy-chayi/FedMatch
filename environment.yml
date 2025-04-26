@@ -1,0 +1,6 @@
+name: FedMatch
+channels:
+  - pytorch
+  - defaults
+dependencies:
+  - python=3.8

@@ -1,5 +1,5 @@
 import os
-from parser import Parser
+from custom_parser import Parser
 from datetime import datetime
 
 from misc.utils import *

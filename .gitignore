@@ -17,3 +17,9 @@ data/valid_generator.py
 
 data/data/*
 data/cifar-10-python.tar.gz
+data/cifar-10-batches-py
+data/lc-bimb-c10
+
+.idea
+
+__pycache__
