@@ -71,7 +71,7 @@ class NetModule:
             out = conv_block(128, 256, pool=True)(out)
             out = conv_block(256, 512, pool=True, pool_no=2)(out)
             out = tf_models.Sequential([conv_block(512, 512), conv_block(512, 512)])(out) + out
-            out = tf_models.Sequential([tf_layers.MaxPooling2D(pool_size=4),tf_layers.Flatten(),self.dense_decomposed(8, self.args.num_classes, 'softmax')])(out)
+            out = tf_models.Sequential([tf_layers.MaxPooling2D(pool_size=2),tf_layers.Flatten(),self.dense_decomposed(8, self.args.num_classes, 'softmax')])(out)
             model = tf_keras.Model(inputs=inputs, outputs=out)
         else:
             def conv_block(in_channels, out_channels, pool=False, pool_no=2):
@@ -87,7 +87,7 @@ class NetModule:
             out = conv_block(128, 256, pool=True)(out)
             out = conv_block(256, 512, pool=True, pool_no=2)(out)
             out = tf_models.Sequential([conv_block(512, 512), conv_block(512, 512)])(out) + out
-            out = tf_models.Sequential([tf_layers.MaxPooling2D(pool_size=4),tf_layers.Flatten(),tf_layers.Dense(self.args.num_classes, use_bias=False, activation='softmax')])(out)
+            out = tf_models.Sequential([tf_layers.MaxPooling2D(pool_size=2),tf_layers.Flatten(),tf_layers.Dense(self.args.num_classes, use_bias=False, activation='softmax')])(out)
             model = tf_keras.Model(inputs=inputs, outputs=out)
             #############################################
             wgts = model.get_weights()
