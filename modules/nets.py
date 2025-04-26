@@ -19,9 +19,9 @@ class NetModule:
     """
     def __init__(self, args):
         self.args = args
-        self.input_shape = (32,32,3)
+        self.input_shape = (32,32,3) if args.dataset_id == 0 else (28,28,1)
         self.shapes = [
-            (3,3,3,64),
+            (3,3,self.input_shape[-1],64),
             (3,3,64,128),
             (3,3,128,128),
             (3,3,128,128),

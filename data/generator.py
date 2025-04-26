@@ -45,8 +45,10 @@ class DataGenerator:
                     x.append(np.array(image))
                     y.append(target)
         elif self.args.dataset_id_to_name[dataset_id] == 'fmnist':
+            print('downloading dataset')
             temp['train'] = datasets.FashionMNIST(self.args.dataset_path, train=True, download=True)
             temp['test'] = datasets.FashionMNIST(self.args.dataset_path, train=False, download=True)
+            print('download finish')
             x, y = [], []
             for dtype in ['train', 'test']:
                 for image, target in temp[dtype]:
