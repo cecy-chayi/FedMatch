@@ -50,8 +50,7 @@ class DataGenerator:
             x, y = [], []
             for dtype in ['train', 'test']:
                 for image, target in temp[dtype]:
-                    image_expanded = np.expand_dims(np.array(image), axis=-1)
-                    x.append(image_expanded)
+                    x.append(np.array(image))
                     y.append(target)
         x, y = self.shuffle(x, y)
         print(f'{self.args.dataset_id_to_name[self.args.dataset_id]} ({np.shape(x)}) loaded.')
