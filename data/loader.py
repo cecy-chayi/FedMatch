@@ -23,7 +23,7 @@ class DataLoader:
         """
 
         self.args = args
-        self.shape = (32,32,3) if args.dataset_id == 0 else (28,28,1)
+        self.shape = (32,32,3) if args.dataset_id == 0 else (28,28)
         self.rand_augment = RandAugment()
         self.base_dir = os.path.join(self.args.dataset_path, self.args.task) 
         # self.stats = [{
@@ -67,6 +67,10 @@ class DataLoader:
             images[sampled] = np.fliplr(images[sampled])
             sampled = random.sample(sampled, int(round(0.25*len(sampled)))) # flip vertically 25% from above
             images[sampled] = np.flipud(images[sampled])
-            return np.array([shift(img, [random.randint(-2, 2), random.randint(-2, 2), 0]) for img in images]) # random shift
+            if len(self.shape) == 2:
+                shift_list = [random.randint(-2, 2), random.randint(-2, 2)]
+            else:
+                shift_list = [random.randint(-2, 2), random.randint(-2, 2), 0]
+            return np.array([shift(img, shift_list) for img in images]) # random shift
         else:
             return np.array([np.array(self.rand_augment(Image.fromarray(np.reshape(img, self.shape)), M=random.randint(2,5))) for img in images])

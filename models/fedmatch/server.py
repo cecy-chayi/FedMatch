@@ -34,7 +34,7 @@ class Server(ServerModule):
         self.curr_round = -1
         mu,std,lower,upper = 125,125,0,255
         self.rgauss = self.loader.scale(truncnorm((lower-mu)/std,(upper-mu)/std, 
-                        loc=mu, scale=std).rvs((1,32,32,3))) # fixed gaussian noise for model embedding
+                        loc=mu, scale=std).rvs((1,32,32,3) if self.args.dataset_id == 0 else (1,28,28,1))) # fixed gaussian noise for model embedding
 
     def build_network(self):
         self.global_model = self.net.build_resnet9(decomposed=True)
