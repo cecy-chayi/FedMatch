@@ -13,6 +13,7 @@ class Parser:
         self.parser.add_argument('--task', type=str, help='task i.e. lc-biid-c10, ls-bimb-c10')
         self.parser.add_argument('--frac-clients', type=float, help='fraction of clients per round')
         self.parser.add_argument('--seed', type=int, help='seed for experiment')
+        self.parser.add_argument('--labeled-ratio', type=float, help='fraction of labeled data')
         
     def parse(self):
         args, unparsed  = self.parser.parse_known_args()
