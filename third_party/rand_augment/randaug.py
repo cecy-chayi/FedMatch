@@ -2,7 +2,6 @@ from PIL import Image
 import matplotlib.pyplot as plt
 import numpy as np
 from PIL import Image, ImageEnhance, ImageOps
-import numpy as np
 import random
 
 '''
@@ -32,7 +31,7 @@ class RandAugment():
             "translateY": np.linspace(0, 0.2, 10),
             "rotate": np.linspace(0, 360, 10),
             "color": np.linspace(0.0, 0.9, 10),
-            "posterize": np.round(np.linspace(8, 4, 10), 0).astype(np.int),
+            "posterize": np.round(np.linspace(8, 4, 10), 0).astype(np.int_),
             "solarize": np.linspace(256, 231, 10),
             "contrast": np.linspace(0.0, 0.5, 10),
             "sharpness": np.linspace(0.0, 0.9, 10),
